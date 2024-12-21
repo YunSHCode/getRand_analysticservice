@@ -1,9 +1,9 @@
 package com.example.getrand_analysticservice.service;
 
-import com.example.getrand_userservice.dto.*;
-import com.example.getrand_userservice.dto.DefaultPastOYDTO;
-import com.example.getrand_userservice.dto.RelatedQueriesDTO;
-import com.example.getrand_userservice.dto.RelatedTopicsDTO;
+import com.example.getrand_analysticservice.dto.*;
+import com.example.getrand_analysticservice.dto.DefaultPastOYDTO;
+import com.example.getrand_analysticservice.dto.RelatedQueriesDTO;
+import com.example.getrand_analysticservice.dto.RelatedTopicsDTO;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
