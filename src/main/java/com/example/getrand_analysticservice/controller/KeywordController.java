@@ -12,11 +12,10 @@ public class KeywordController {
 
     @GetMapping("/keyword/api")
     @ResponseBody
-    public String callKeywordAPI(@RequestParam("keyword") String keyword) {
-        trendService.pastOneYear(keyword);
-        trendService.fetchRelatedQueries(keyword);
-        trendService.fetchRelatedQueries(keyword);
-
+    public String callKeywordAPI(@RequestParam("keyword") String query) {
+        trendService.pastOneYear(query);
+        trendService.fetchRelatedQueries(query);
+        trendService.fetchRelatedQueries(query);
         return "OK";
     }
 }
