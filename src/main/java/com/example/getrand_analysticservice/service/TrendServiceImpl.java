@@ -1,9 +1,8 @@
 package com.example.getrand_analysticservice.service;
 
-import com.example.getrand_analysticservice.dto.*;
-import com.example.getrand_analysticservice.dto.DefaultPastOYDTO;
-import com.example.getrand_analysticservice.dto.RelatedQueriesDTO;
-import com.example.getrand_analysticservice.dto.RelatedTopicsDTO;
+import com.example.getrand_analysticservice.dto.DefaultPastOY;
+import com.example.getrand_analysticservice.dto.RelatedQueries;
+import com.example.getrand_analysticservice.dto.RelatedTopics;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -30,12 +29,12 @@ public class TrendServiceImpl implements TrendService {
             JsonNode timelineData = rootNode.path("interest_over_time").path("timeline_data");
             System.out.println(timelineData);
 
-            List<DefaultPastOYDTO> defaultTrending = new ArrayList<>();
+            List<DefaultPastOY> defaultTrending = new ArrayList<>();
 
             if (timelineData != null && timelineData.isArray()) { // timelineData가 배열인지 확인
                 for (JsonNode node : timelineData) {
                     // defaultTrendMonthsDTO 객체 생성
-                    DefaultPastOYDTO dto = new DefaultPastOYDTO();
+                    DefaultPastOY dto = new DefaultPastOY();
                     dto.setDate(node.get("date").asText());
                     JsonNode values = node.path("values").get(0);
                     if(values != null) {
@@ -56,13 +55,13 @@ public class TrendServiceImpl implements TrendService {
             String jsonResponse = apiService.getRelatedQueries("KR", "google_trends","RELATED_QUERIES" , query,apiKey);
             JsonNode rootNode = mapper.readTree(jsonResponse);
             JsonNode topQueriesNode = rootNode.path("related_queries").path("top");
-            List<RelatedQueriesDTO> topQueries = new ArrayList<>();
+            List<RelatedQueries> topQueries = new ArrayList<>();
             // 'top' 노드가 비어있지 않다면 처리
             if (topQueriesNode != null && topQueriesNode.isArray()) {
                 int limit = Math.min(topQueriesNode.size(), 10); // 최대 10개까지만 처리
                 for (int i = 0; i < limit; i++) {
                     JsonNode node = topQueriesNode.get(i);
-                    RelatedQueriesDTO entity = new RelatedQueriesDTO();
+                    RelatedQueries entity = new RelatedQueries();
 
                     // 필드 값 매핑
                     entity.setQuery(node.get("query").asText());
@@ -86,13 +85,13 @@ public class TrendServiceImpl implements TrendService {
             String jsonResponse = apiService.getRelatedTopics("KR", "google_trends","RELATED_TOPICS" , query, apiKey);
             JsonNode rootNode = mapper.readTree(jsonResponse);
             JsonNode topTopicsNode = rootNode.path("related_topics").path("top");
-            List<RelatedTopicsDTO> topTopics = new ArrayList<>();
+            List<RelatedTopics> topTopics = new ArrayList<>();
             // 'top' 노드가 비어있지 않다면 처리
             if (topTopicsNode != null && topTopicsNode.isArray()) {
                 int limit = Math.min(topTopicsNode.size(), 10);
                 for (int i = 0; i < limit; i++) {
                     JsonNode node = topTopicsNode.get(i);
-                    RelatedTopicsDTO entity = new RelatedTopicsDTO();
+                    RelatedTopics entity = new RelatedTopics();
                     JsonNode topicNode = node.get("topic");
                     if (topicNode != null) {
                         entity.setTitle(topicNode.get("title").asText());

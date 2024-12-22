@@ -1,19 +1,20 @@
 package com.example.getrand_analysticservice.dto;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RelatedQueriesDTO {
+@Entity
+@Table(name ="default_pastoneyear")
+public class DefaultPastOY extends PublicInfo{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String query;
+    private String date;
     private String value;
-    private int extractedValue;
-    private Date createDate;
-    private Date updateDate;
 }
+
