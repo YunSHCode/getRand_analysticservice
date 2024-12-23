@@ -3,17 +3,19 @@ package com.example.getrand_analysticservice.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class RelatedQueriesDTO {
+@AllArgsConstructor
+public class RealTimeTrendDTO {
+
     private Long id;
     private String query;
-    private String value;
-    private int extractedValue;
+    private int searchVolume;
+    private int increasePercentage;
     private Date createDate;
     private Date updateDate;
 }
