@@ -22,7 +22,7 @@ public class TrendServiceImpl implements TrendService {
     @Value("${serp.api-key}")
     private String apiKey;
 
-    @Cacheable(value = "pastOneYearCache", key = "#query", unless = "#result == null || #result.isEmpty()")
+//    @Cacheable(value = "pastOneYearCache", key = "#query", unless = "#result == null || #result.isEmpty()")
     @Override
     public List<DefaultPastOYResponseDTO> pastOneYear(String query) {
         try {
@@ -52,7 +52,7 @@ public class TrendServiceImpl implements TrendService {
         }
     }
 
-    @Cacheable(value = "relatedQueriesCache", key = "#query", unless = "#result == null || #result.isEmpty()")
+//    @Cacheable(value = "relatedQueriesCache", key = "#query", unless = "#result == null || #result.isEmpty()")
     @Override
     public List<RelatedQueriesResponseDTO> fetchRelatedQueries(String query) {
         try {
@@ -86,7 +86,7 @@ public class TrendServiceImpl implements TrendService {
         }
     }
 
-    @Cacheable(value = "relatedTopicsCache", key = "#query", unless = "#result == null || #result.isEmpty()")
+//    @Cacheable(value = "relatedTopicsCache", key = "#query", unless = "#result == null || #result.isEmpty()")
     @Override
     public List<RelatedTopicsResponseDTO> fetchRelatedTopics(String query) {
         try {
