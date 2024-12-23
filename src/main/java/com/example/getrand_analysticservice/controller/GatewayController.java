@@ -36,18 +36,6 @@ public class GatewayController {
         return trendService.pastOneYear(query);
     }
 
-    @GetMapping("/relatedQueries/keyword")
-    @ResponseBody
-    public List<RelatedQueriesResponseDTO> keywordRelatedQueries(@RequestParam("keyword") String query) {
-        return trendService.fetchRelatedQueries(query);
-    }
-
-    @GetMapping("/relatedTopics/keyword")
-    @ResponseBody
-    public List<RelatedTopicsResponseDTO> keywordRelatedTopics(@RequestParam("keyword") String query) {
-        return trendService.fetchRelatedTopics(query);
-    }
-
     @GetMapping("/realTimeTrend/findall")
     @ResponseBody
     public List<RealTimeTrendResponseDTO> getAllRealTimeTrend() {
@@ -72,6 +60,12 @@ public class GatewayController {
         return dataCollectionResponseService.updateRelatedTopics();
     }
 
+    @GetMapping("/relatedTopics/keyword")
+    @ResponseBody
+    public List<RelatedTopicsResponseDTO> keywordRelatedTopics(@RequestParam("keyword") String query) {
+        return trendService.fetchRelatedTopics(query);
+    }
+
     @GetMapping("/relatedQueries/findall")
     @ResponseBody
     public List<com.example.getrand_analysticservice.dto.RelatedQueriesResponseDTO> getAllRelatedQueries() {
@@ -82,5 +76,11 @@ public class GatewayController {
     @ResponseBody
     public List<com.example.getrand_analysticservice.dto.RelatedQueriesResponseDTO> updateRelatedQueries() {
         return dataCollectionResponseService.updateRelatedQueries();
+    }
+
+    @GetMapping("/relatedQueries/keyword")
+    @ResponseBody
+    public List<RelatedQueriesResponseDTO> keywordRelatedQueries(@RequestParam("keyword") String query) {
+        return trendService.fetchRelatedQueries(query);
     }
 }
