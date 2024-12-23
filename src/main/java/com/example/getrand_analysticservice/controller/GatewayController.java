@@ -3,11 +3,9 @@ package com.example.getrand_analysticservice.controller;
 import com.example.getrand_analysticservice.dto.DefaultPastOYResponseDTO;
 import com.example.getrand_analysticservice.dto.RealTimeTrendResponseDTO;
 import com.example.getrand_analysticservice.service.DataCollectionResponseService;
+import com.example.getrand_analysticservice.service.TrendService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,6 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GatewayController {
     private final DataCollectionResponseService dataCollectionResponseService;
+    private final TrendService trendService;
 
     @GetMapping("/defaultPastOY/findall")
     @ResponseBody
@@ -27,6 +26,12 @@ public class GatewayController {
     @ResponseBody
     public List<DefaultPastOYResponseDTO> updateDefaultPastOY() {
         return dataCollectionResponseService.updateDefaultPastOY();
+    }
+
+    @GetMapping("/defaultPastOY/keyword")
+    @ResponseBody
+    public List<DefaultPastOYResponseDTO> keywordDefaultPastOY(@RequestParam("keyword") String query) {
+        return trendService.pastOneYear(query);
     }
 
     @GetMapping("/realTimeTrend/findall")
