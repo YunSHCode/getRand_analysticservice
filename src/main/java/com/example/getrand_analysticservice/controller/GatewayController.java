@@ -1,0 +1,67 @@
+package com.example.getrand_analysticservice.controller;
+
+import com.example.getrand_analysticservice.dto.DefaultPastOYResponseDTO;
+import com.example.getrand_analysticservice.dto.RealTimeTrendResponseDTO;
+import com.example.getrand_analysticservice.service.DataCollectionResponseService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/analysticservice")
+@RequiredArgsConstructor
+public class GatewayController {
+    private final DataCollectionResponseService dataCollectionResponseService;
+
+    @GetMapping("/defaultPastOY/findall")
+    @ResponseBody
+    public List<DefaultPastOYResponseDTO> getAllDefaultPastOY() {
+        return dataCollectionResponseService.getAllDefaultPastOY();
+    }
+
+    @GetMapping("/defaultPastOY/update")
+    @ResponseBody
+    public List<DefaultPastOYResponseDTO> updateDefaultPastOY() {
+        return dataCollectionResponseService.updateDefaultPastOY();
+    }
+
+    @GetMapping("/realTimeTrend/findall")
+    @ResponseBody
+    public List<RealTimeTrendResponseDTO> getAllRealTimeTrend() {
+        return dataCollectionResponseService.getAllRealTimeTrend();
+    }
+
+    @GetMapping("/realTimeTrend/update")
+    @ResponseBody
+    public List<RealTimeTrendResponseDTO> updateRealTimeTrend() {
+        return dataCollectionResponseService.updateRealTimeTrend();
+    }
+
+    @GetMapping("/relatedTopics/findall")
+    @ResponseBody
+    public List<com.example.getrand_analysticservice.dto.RelatedTopicsResponseDTO> getAllRelatedTopics() {
+        return dataCollectionResponseService.getAllRelatedTopics();
+    }
+
+    @GetMapping("/relatedTopics/update")
+    @ResponseBody
+    public List<com.example.getrand_analysticservice.dto.RelatedTopicsResponseDTO> updateRelatedTopics() {
+        return dataCollectionResponseService.updateRelatedTopics();
+    }
+
+    @GetMapping("/relatedQueries/findall")
+    @ResponseBody
+    public List<com.example.getrand_analysticservice.dto.RelatedQueriesResponseDTO> getAllRelatedQueries() {
+        return dataCollectionResponseService.getAllRelatedQueries();
+    }
+
+    @GetMapping("/relatedQueries/update")
+    @ResponseBody
+    public List<com.example.getrand_analysticservice.dto.RelatedQueriesResponseDTO> updateRelatedQueries() {
+        return dataCollectionResponseService.updateRelatedQueries();
+    }
+}

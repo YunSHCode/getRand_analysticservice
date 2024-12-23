@@ -4,16 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class RelatedQueriesDTO {
-    private Long id;
-    private String query;
+public class DefaultPastOYResponseDTO {
+    private String date;
     private String value;
-    private int extractedValue;
-    private Date createDate;
-    private Date updateDate;
 }
