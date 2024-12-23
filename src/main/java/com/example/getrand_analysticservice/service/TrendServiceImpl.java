@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,9 +22,11 @@ public class TrendServiceImpl implements TrendService {
     @Value("${serp.api-key}")
     private String apiKey;
 
+    @Cacheable(value = "pastOneYearCache", key = "#query", unless = "#result == null || #result.isEmpty()")
     @Override
     public List<DefaultPastOYResponseDTO> pastOneYear(String query) {
         try {
+            System.out.println("api호출후 실행: pastOneYear");
             String jsonResponse = apiService.defaultTrend("google_trends", query, "today 12-m", apiKey);
             JsonNode rootNode = mapper.readTree(jsonResponse);
             JsonNode timelineData = rootNode.path("interest_over_time").path("timeline_data");
@@ -49,9 +52,11 @@ public class TrendServiceImpl implements TrendService {
         }
     }
 
+    @Cacheable(value = "relatedQueriesCache", key = "#query", unless = "#result == null || #result.isEmpty()")
     @Override
     public List<RelatedQueriesResponseDTO> fetchRelatedQueries(String query) {
         try {
+            System.out.println("api호출후 실행: fetchRelatedQueries");
             String jsonResponse = apiService.getRelatedQueries("KR", "google_trends","RELATED_QUERIES" , query,apiKey);
             JsonNode rootNode = mapper.readTree(jsonResponse);
             JsonNode topQueriesNode = rootNode.path("related_queries").path("top");
@@ -81,9 +86,11 @@ public class TrendServiceImpl implements TrendService {
         }
     }
 
+    @Cacheable(value = "relatedTopicsCache", key = "#query", unless = "#result == null || #result.isEmpty()")
     @Override
     public List<RelatedTopicsResponseDTO> fetchRelatedTopics(String query) {
         try {
+            System.out.println("api호출후 실행: fetchRelatedTopics");
             String jsonResponse = apiService.getRelatedTopics("KR", "google_trends","RELATED_TOPICS" , query, apiKey);
             JsonNode rootNode = mapper.readTree(jsonResponse);
             JsonNode topTopicsNode = rootNode.path("related_topics").path("top");

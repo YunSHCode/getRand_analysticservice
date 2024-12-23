@@ -2,6 +2,8 @@ package com.example.getrand_analysticservice.controller;
 
 import com.example.getrand_analysticservice.dto.DefaultPastOYResponseDTO;
 import com.example.getrand_analysticservice.dto.RealTimeTrendResponseDTO;
+import com.example.getrand_analysticservice.dto.RelatedQueriesResponseDTO;
+import com.example.getrand_analysticservice.dto.RelatedTopicsResponseDTO;
 import com.example.getrand_analysticservice.service.DataCollectionResponseService;
 import com.example.getrand_analysticservice.service.TrendService;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +34,18 @@ public class GatewayController {
     @ResponseBody
     public List<DefaultPastOYResponseDTO> keywordDefaultPastOY(@RequestParam("keyword") String query) {
         return trendService.pastOneYear(query);
+    }
+
+    @GetMapping("/relatedQueries/keyword")
+    @ResponseBody
+    public List<RelatedQueriesResponseDTO> keywordRelatedQueries(@RequestParam("keyword") String query) {
+        return trendService.fetchRelatedQueries(query);
+    }
+
+    @GetMapping("/relatedTopics/keyword")
+    @ResponseBody
+    public List<RelatedTopicsResponseDTO> keywordRelatedTopics(@RequestParam("keyword") String query) {
+        return trendService.fetchRelatedTopics(query);
     }
 
     @GetMapping("/realTimeTrend/findall")
