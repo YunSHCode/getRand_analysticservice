@@ -3,17 +3,17 @@ package com.example.getrand_analysticservice.dto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.util.Date;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class DefaultPastDTO {
+@NoArgsConstructor
+public class RelatedQueriesResponseDTO {
     private Long id;
-    private String date;
+    private String query;
     private String value;
+    private int extractedValue;
     private Date createDate;
     private Date updateDate;
 }

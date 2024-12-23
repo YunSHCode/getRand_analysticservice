@@ -1,21 +1,19 @@
 package com.example.getrand_analysticservice.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "trends")
+import java.util.Date;
+
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-public class RealTimeTrendEntity extends PublicInfo {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class RealTimeTrendResponseDTO {
     private Long id;
-
     private String query;
     private int searchVolume;
     private int increasePercentage;
+    private Date createDate;
+    private Date updateDate;
 }
