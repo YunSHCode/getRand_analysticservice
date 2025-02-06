@@ -26,7 +26,7 @@ eureka:
     lease-expiration-duration-in-seconds: 2
 
 serp:
-  api-key: bd471ed09868f3f7f787aca90100e0ef547d588900f4832cb94aea8282388f23
+  api-key: 5f4cb96914761a3ef1df9f0ec2f4961edf20fb13b64d0ee68dc3ec9b0a18889f
 
 logging:
   level:
