@@ -27,4 +27,4 @@ WORKDIR /myapp
 #프로젝트 빌드로 생성된 jar파일을 런타임 이미지로 복사
 COPY --from=build /myapp/build/libs/*.jar /myapp/analysticservice.jar
 EXPOSE 5004
-ENTRYPOINT ["java","-jar","/analysticservice.jar"]
+ENTRYPOINT ["java","-jar","analysticservice.jar"]
