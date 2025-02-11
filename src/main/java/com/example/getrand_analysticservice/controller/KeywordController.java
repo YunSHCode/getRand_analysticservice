@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 public class KeywordController {
     private final TrendService trendService;
 
-    @GetMapping("/keyword/api")
+    @GetMapping("/api")
     @ResponseBody
     public String callKeywordAPI(@RequestParam("keyword") String query) {
         trendService.pastOneYear(query);
