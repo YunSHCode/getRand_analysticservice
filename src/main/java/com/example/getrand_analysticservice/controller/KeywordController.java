@@ -16,6 +16,6 @@ public class KeywordController {
         trendService.pastOneYear(query);
         trendService.fetchRelatedQueries(query);
         trendService.fetchRelatedQueries(query);
-        return "OK1";
+        return "OK12";
     }
 }
